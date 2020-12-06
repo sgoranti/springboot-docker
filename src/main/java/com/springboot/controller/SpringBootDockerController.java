@@ -10,6 +10,6 @@ public class SpringBootDockerController {
 
 	@GetMapping
 	public String index() {
-		return "Spring Boot Docker sample Example";
+		return "Spring Boot Docker Example";
 	}
 }
