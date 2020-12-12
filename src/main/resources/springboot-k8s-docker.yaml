@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: springboot-k8s-docker
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 8088
+    targetPort: 8088
+  selector:
+    app: springboot-k8s-docker
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springboot-k8s-docker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: springboot-k8s-docker
+  template:
+    metadata:
+      labels:
+        app: springboot-k8s-docker
+    spec:
+      containers:
+      - name: springboot-k8s-docker
+        image: access2sree/springboot-docker
+        ports:
+        - containerPort: 8088
